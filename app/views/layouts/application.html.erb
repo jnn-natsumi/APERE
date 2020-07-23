@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ApereApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>ApereApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-logo" href="/">
+              <%= image_tag('logo.png') %>
+            </a>
+      </div>
+      <% if user_signed_in? %>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/about">APEREとは</a></li>
+            <li><a href="#">投稿一覧</a></li>
+            <li><a href="#">キロクする</a></li>
+            <li><%= link_to 'My Page', user_path(current_user.id) %></li>
+          </ul>
+        </div>
+      <% else %>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/about">APEREとは</a></li>
+            <li><a href="/users/sign_in">ログイン</a></li>
+            <li><a href="/users/sign_up">新規登録</a></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+
+  <%= yield %>
+</body>
+
+<!-- footer -->
+<style>
+  .bg-4 {
+    background-color: #2f2f2f;
+    color: #ffffff;
+  }
+</style>
+
+<footer class="container-fluid bg-4 text-center">
+  <p>NATSUMI MINOWA</p>
+  <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+</footer>
+
+
 </html>
