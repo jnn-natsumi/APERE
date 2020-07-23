@@ -1,15 +1,17 @@
 <div class="container">
-	<div class="col-10">
+	<div class="col-12">
 		<h1>My Page</h1>
 
 		<div class="row">
 			<div class="col-sm-3">
-				<div><%= attachment_image_tag(@user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg")%>
+				<div><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg")%>
 				</div>
 		    </div>
 			<div class="col-sm-4">
 				<div><%= @user.name %></div>
 		        <div><%= @user.profile %></div>
+		        <div><p>フォロー数：<%= @user.follower.count %></p></div>
+		        <div><p>フォロワー数：<%= @user.follow.count %></p></div>
 		    </div>
 		    <div class="col-sm-5">
 		    	<ul class="nav nav-tabs">
@@ -17,7 +19,7 @@
 		    		<li><a href="#">お気に入り</a></li>
 		    		<li><a href="#">フォロー</a></li>
 		    		<li><a href="#">フォロワー</a></li>
-		    		<li><%= link_to '  ',edit_user_path(@user), class: "glyphicon glyphicon-wrench" %></li>
+		    		<li><%= link_to ' ',edit_user_path(@user), class: "glyphicon glyphicon-wrench" %></li>
 		    	</ul>
 		    </div>
 		</div>
