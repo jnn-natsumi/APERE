@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 2020_07_22_063645) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "prefectures_id"
-    t.string "travel_spot"
+    t.integer "travel_spot"
     t.integer "cost"
     t.string "tag"
-    t.string "point_a"
-    t.string "point_b"
+    t.integer "point_a"
+    t.integer "point_b"
     t.text "explanation"
     t.string "travel_image_id"
     t.datetime "created_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_063645) do
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.string "prefectures_name"
+    t.integer "prefectures_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_063645) do
     t.string "name"
     t.string "profile_image_id"
     t.text "profile"
-    t.string "birthplace"
+    t.integer "birthplace", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

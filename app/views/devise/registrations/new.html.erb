@@ -1,29 +1,45 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="col-10">
+    <h2>新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field">
+      <table class="table table-condensed">
+        <tr>
+          <th><%= f.label :名前 %></th>
+          <td><%= f.text_field :name, autocomplete: "name" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :メールアドレス %></th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :拠点の都道府県 %><br><p>(マイページ編集で変更可能です)</p></th>
+          <td><%= f.select :birthplace, User.birthplaces.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :パスワード（６文字以上） %>
+          </th>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        <!-- <%  @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)文字以上</em> -->
+        </tr>
+        <tr>
+          <th><%= f.label :パスワード（確認用） %></th>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+      </table>
+
+      <div class="text-center">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </div>
   </div>
+</div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="text-right">
+    <p>登録済みの方は、<%= render "devise/shared/links" %>からログインして下さい。</p>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
