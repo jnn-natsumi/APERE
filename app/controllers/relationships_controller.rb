@@ -1,23 +1,17 @@
 class RelationshipsController < ApplicationController
 
+	# follow フォローしている follower フォローされてる
 	def create
-	    current_user.follow(params[:user_id])
-        redirect_to request.referer
-	end
+	  	follow = current_user.active_relationships.build(follower_id: params[:user_id])
+	  	follow.save
+	  	redirect_to request.referrer
+  	# request.referrerで１つ前のURLを返す。
+    end
 
-	def destroy
-		current_user.unfollow(params[:user_id])
-		redirect_to request.referer
-	end
-
-	def follower
-		user = User.find(params[:user_id])
-		@users = user.following_user
-	end
-
-	def followed
-		user = User.find(params[:user_id])
-		@users = user.follower_user
-	end
+    def destroy
+	  	follow = current_user.active_relationships.find_by(follower_id: params[:user_id])
+	  	follow.destroy
+	  	redirect_to request.referrer
+    end
 
 end

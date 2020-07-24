@@ -5,23 +5,27 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :profile_image, destroy: false
+  validates :name, presence: true, length: {in: 2..20 }
+  validates :profile, length: { maximum: 140 }
 
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
-  has_many :follow, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy # フォロワー取得
-  has_many :following_user, through: :follower, source: :follow # 自分がフォローしている人
-  has_many :follower_user, through: :follow, source: :follower # 自分をフォローしている人
+  has_many :posts
 
-  def follow(user_id)
-    follower.create(follow_id: user_id)
+  # follow フォローしている follower フォローされてる
+  # =====自分がフォローしているユーザーとの関連=====
+  # フォローする側のUserから見て、フォローされる側のUserを集まるので、親はfollow_id(フォローする側)
+  has_many :active_relationships, class_name:"Relationship", foreign_key: :follow_id # フォロワー取得
+  has_many :follow_user, through: :active_relationships, source: :follow # 自分がフォローしている人
+
+  # =====自分がフォローされるユーザーとの関連=====
+  # フォローされる側のUserから見て、フォローしてくる側のUserを集めるので、親はfollower_id(フォローされる側)
+  has_many :passive_relationships, class_name:"Relationship", foreign_key: :follower_id # フォロー取得
+  has_many :followers, through: :passive_relationships, source: :follower # 自分がフォローされている人
+
+  def followed_by?(user)
+  # フォローしたユーザーが過去にフォローしていたか調べる
+  passive_relationships.find_by(follow_id: user.id).present?
   end
 
-  def unfollow(user_id)
-    follower.find_by(follow_id: user_id).destroy
-  end
-
-  def following?(user)
-    following_user.include?(user)
-  end
 
   enum birthplace: {
   "--未選択--":0,北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

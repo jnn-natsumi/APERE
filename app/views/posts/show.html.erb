@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="col-12">
+		<h2>投稿詳細　Page</h2>
+
+	  <div class="row">
+		<div class="col-sm-3">
+			<div>
+			<p><strong>旅行先</strong>
+			<span class="glyphicon glyphicon-plane"></span></p>
+			<%= @post.travel_spot %>
+			</div>
+			<div>
+				<p><strong>費用</strong>
+				<span class="glyphicon glyphicon-yen"></span></p>
+				<%= @post.cost %>
+			</div>
+			<div>
+				<p><strong>タグ付け</strong>
+				<span class="glyphicon glyphicon-tags"></span></p>
+				<%= @post.tag %>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div>
+				<p><strong>２拠点</strong></p>
+				<span class="glyphicon glyphicon-user"></span>
+				<%= @post.point_a %>
+				<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
+				<%= @post.point_b %>
+				<span class="glyphicon glyphicon-user"></span>
+			</div>
+			<div>
+				<p><strong>説明文</strong>
+				<span class="glyphicon glyphicon-pencil"></span></p>
+				<%= @post.explanation %>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div>
+				<p><strong>画像</strong>
+				<span class="glyphicon glyphicon-picture"></span></p>
+				<%= attachment_image_tag @post, :travel_image, :fill, 200, 200, fallback: "no-image-mini.jpg" %>
+			</div>
+			<div class="actions text-right">
+				<% if current_user == @user %>
+		        	<%= link_to 'Edit',edit_post_path(@post), class: "btn btn-default btn-sm" %>
+			</div>
+		</div>
+	  <% end %>
+	  </div>
+	</div>
+</div>

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@posts = @user.posts
 	end
 
 	def index
@@ -24,6 +25,19 @@ class UsersController < ApplicationController
 
 	def favorite
 	end
+
+  # フォロー・フォロワー一覧の実装
+  # フォローしている ＝ follow
+    def follows
+	    user = User.find(params[:id])
+	    @users = user.follows
+    end
+
+  # フォローされている ＝ followers
+    def followers
+	    user = User.find(params[:id])
+	    @users = user.followers
+    end
 
 	private
 	def user_params
