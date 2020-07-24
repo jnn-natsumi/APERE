@@ -27,15 +27,17 @@ class UsersController < ApplicationController
 	end
 
   # フォロー・フォロワー一覧の実装
-  # フォローしている ＝ follow
+  # フォローしている ＝ follows,following
     def follows
 	    user = User.find(params[:id])
-	    @users = user.follows
+	    @user = User.find(params[:id])
+	    @users = user.followings
     end
 
   # フォローされている ＝ followers
     def followers
 	    user = User.find(params[:id])
+	    @user = User.find(params[:id])
 	    @users = user.followers
     end
 

@@ -13,17 +13,17 @@ class User < ApplicationRecord
   # follow フォローしている follower フォローされてる
   # =====自分がフォローしているユーザーとの関連=====
   # フォローする側のUserから見て、フォローされる側のUserを集まるので、親はfollow_id(フォローする側)
-  has_many :active_relationships, class_name:"Relationship", foreign_key: :follow_id # フォロワー取得
-  has_many :follow_user, through: :active_relationships, source: :follow # 自分がフォローしている人
+  has_many :active_relationships, class_name:"Relationship", foreign_key: :following_id # フォロワー取得
+  has_many :followings, through: :active_relationships, source: :follower # 自分がフォローしている人
 
   # =====自分がフォローされるユーザーとの関連=====
   # フォローされる側のUserから見て、フォローしてくる側のUserを集めるので、親はfollower_id(フォローされる側)
   has_many :passive_relationships, class_name:"Relationship", foreign_key: :follower_id # フォロー取得
-  has_many :followers, through: :passive_relationships, source: :follower # 自分がフォローされている人
+  has_many :followers, through: :passive_relationships, source: :following # 自分がフォローされている人
 
   def followed_by?(user)
   # フォローしたユーザーが過去にフォローしていたか調べる
-  passive_relationships.find_by(follow_id: user.id).present?
+  passive_relationships.find_by(following_id: user.id).present?
   end
 
 
