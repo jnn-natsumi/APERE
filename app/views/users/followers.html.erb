@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="col-12">
+
+<%= render 'users/followers', user: @user %>
+
+<h1>フォロワー一覧</h1>
+
+<!-- フォローされている側 -->
+	<!--users一覧 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>名前</th>
+				<th>拠点</th>
+				<th>自己紹介</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
+				<td><%= user.name%></td>
+				<th><%= user.birthplace %></th>
+				<th><%= user.profile %></th>
+				<th>
+					<% if current_user != user %>
+						<% if user.followed_by?(current_user) %>
+							<div class="row"><%= link_to "Unfollow", user_relationships_path(user.id), class: "btn btn-danger", method: :delete%></div>
+						<% else %>
+							<div class="row"><%= link_to "Follow", user_relationships_path(user.id), class: "btn btn-info", method: :post %></div>
+						<% end %>
+					<% end %>
+				</th>
+				<td>
+					<% if current_user != user %>
+					<%= link_to "Show", user, class: "user_#{user.id}" %>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	</div>
+</div>
