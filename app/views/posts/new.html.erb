@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="col-12">
+
+<h1>キロクする</h1>
+	<%= form_for(@post) do |f| %>
+		<div class="col-sm-3">
+			<div>
+			<%= f.label :旅行先 %>
+			<span class="glyphicon glyphicon-plane"></span>
+			<%= f.select :travel_spot, Post.travel_spots.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+			</div>
+			<div>
+				<%= f.label :費用 %>
+				<span class="glyphicon glyphicon-yen"></span>
+				<%= f.text_field :cost, class: "cost" %>
+			</div>
+			<div>
+				<%= f.label :タグ付け %>
+				<span class="glyphicon glyphicon-tags"></span>
+				<%= f.select :tag, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div>
+				<%= f.label :"2拠点" %>
+				<span class="glyphicon glyphicon-user"></span>
+				<%= f.select :point_a, Post.point_as.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+				<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
+				<%= f.select :point_b, Post.point_bs.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+				<span class="glyphicon glyphicon-user"></span>
+			</div>
+			<div>
+				<%= f.label :説明文 %>
+				<span class="glyphicon glyphicon-pencil"></span>
+				<%= f.text_area :explanation, class: "explanation" %>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div>
+				<%= f.label :画像 %>
+				<span class="glyphicon glyphicon-picture"></span>
+				<%= f.attachment_field :travel_image, class: "travel_image" %>
+			</div>
+			<div class="actions text-right">
+				<%= f.submit "キロクする", class: "btn btn-info" %>
+			</div>
+		</div>
+	<% end %>
+
+	</div>
+</div>

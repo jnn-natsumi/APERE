@@ -27,8 +27,8 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/about">APEREとは</a></li>
-            <li><a href="#">投稿一覧</a></li>
-            <li><a href="#">キロクする</a></li>
+            <li><%= link_to '投稿一覧', posts_path %></li>
+            <li><%= link_to 'キロクする', new_post_path %></li>
             <li><%= link_to 'My Page', user_path(current_user.id) %></li>
           </ul>
         </div>

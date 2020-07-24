@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_063645) do
     t.integer "prefectures_id"
     t.integer "travel_spot"
     t.integer "cost"
-    t.string "tag"
+    t.integer "tag"
     t.integer "point_a"
     t.integer "point_b"
     t.text "explanation"
