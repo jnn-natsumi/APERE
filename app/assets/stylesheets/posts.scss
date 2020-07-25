@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
 table th,table td{
   text-align: center;
   width: 20%;
@@ -11,6 +17,18 @@ table th,table td{
 table th,table td.comment{
   text-align: center;
   width: 40%;
+  padding: 15px 0;
+}
+
+table th,table td.explan{
+  text-align: center;
+  width: 30%;
+  padding: 15px 0;
+}
+
+table th,table td.mini{
+  text-align: center;
+  width: 10%;
   padding: 15px 0;
 }
 

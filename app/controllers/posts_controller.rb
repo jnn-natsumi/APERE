@@ -18,6 +18,16 @@ class PostsController < ApplicationController
     end
 
     def edit
+        @post = Post.find(params[:id])
+    end
+
+    def update
+        @post = Post.find(params[:id])
+        if @post.update(post_params)
+            redirect_to post_path(@post.id), notice: "キロクを編集しました！"
+        else
+            render action: :edit
+        end
     end
 
     def show
@@ -27,10 +37,10 @@ class PostsController < ApplicationController
         @comments = @post.comments
     end
 
-    def update
-    end
-
     def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        redirect_to user_path(current_user)
     end
 
     private

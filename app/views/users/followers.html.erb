@@ -14,7 +14,6 @@
 				<th>名前</th>
 				<th>拠点</th>
 				<th>自己紹介</th>
-				<th></th>
 			</tr>
 		</thead>
 
@@ -22,7 +21,7 @@
 			<% @users.each do |user| %>
 			<tr>
 				<td><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
-				<td><%= user.name%></td>
+				<td><%= link_to user.name, user %></td>
 				<th><%= user.birthplace %></th>
 				<th><%= user.profile %></th>
 				<th>
@@ -34,11 +33,6 @@
 						<% end %>
 					<% end %>
 				</th>
-				<td>
-					<% if current_user != user %>
-					<%= link_to "Show", user, class: "user_#{user.id}" %>
-					<% end %>
-				</td>
 			</tr>
 			<% end %>
 		</tbody>
