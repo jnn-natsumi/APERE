@@ -28,13 +28,13 @@
 		    <div class="col-sm-5">
 		    	<ul class="nav nav-tabs">
 		    		<li><%= link_to '投稿', user_path(user) %></li>
-		    		<li><%= link_to 'お気に入り', favorite_user_path(user) %></li>
+		    		<li class="active"><%= link_to 'お気に入り', favorite_user_path(user) %></li>
 		    		<li><%= link_to 'フォロー', follows_user_path(user) %></li>
-		    		<li class="active"><%= link_to 'フォロワー', followers_user_path(user) %></li>
+		    		<li><%= link_to 'フォロワー', followers_user_path(user) %></li>
 		    		<% if current_user == user %>
 		    		<li><%= link_to ' ',edit_user_path(user), class: "glyphicon glyphicon-cog" %></li>
 		    		<% end %>
 		    	</ul>
-		    	<h5 class="leftcolor-blue">フォローされているユーザーを確認できます♪</h5><br />
+		    	<h5 class="leftcolor-blue">行ったところや行きたいところを登録できます♪</h5><br />
 		    </div>
 		</div>

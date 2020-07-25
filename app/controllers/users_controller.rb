@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 	end
 
 	def favorite
+		@user = User.find(params[:id])
 	end
 
   # フォロー・フォロワー一覧の実装
