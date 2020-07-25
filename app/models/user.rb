@@ -8,7 +8,11 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {in: 2..20 }
   validates :profile, length: { maximum: 140 }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  # dependent: :destroyは、has_manyで使えるオプション。
+  # 1:Nの関係において、「1」のデータが削除された場合、関連する「N」のデータも削除される設定。
 
   # follow フォローしている follower フォローされてる
   # =====自分がフォローしているユーザーとの関連=====
@@ -22,9 +26,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following # 自分がフォローされている人
 
   def followed_by?(user)
-  # フォローしたユーザーが過去にフォローしていたか調べる
   passive_relationships.find_by(following_id: user.id).present?
   end
+  # フォローしたユーザーが過去にフォローしていたか調べる
 
 
   enum birthplace: {

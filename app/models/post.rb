@@ -7,6 +7,12 @@ class Post < ApplicationRecord
   validates :tag, presence: true
 
   belongs_to :user, optional: true
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 
 	enum travel_spot: {
   "--未選択--":0,北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

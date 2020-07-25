@@ -5,22 +5,37 @@
 	<h2>投稿一覧</h2>
 	<p>favorite comment 機能実装</p>
  		<table>
- 			<% @posts.each do |post| %>
 			<tr>
-				<th class="post"></th>
 				<th class="post">旅行先</th>
 				<th class="post">２拠点</th>
 				<th class="post">費用</th>
 				<th class="post">説明</th>
+				<th class="post"></th>
+				<th class="post"></th>
 			</tr>
 			<tr>
-				<td>
-					<%= link_to ' check',post_path(post), class: "btn btn-default btn-sm glyphicon glyphicon-eye-open" %>
-				</td>
+				<% @posts.each do |post| %>
 				<td><%= post.travel_spot %></td>
 				<td><%= post.point_a %>と<%= post.point_b %></td>
 				<td><%= post.cost %></td>
 				<td><%= post.explanation %></td>
+				<td>
+					<%= link_to ' check',post_path(post), class: "btn btn-default btn-sm glyphicon glyphicon-eye-open" %>
+					<!-- like -->
+				<% if post.liked_by?(current_user) %>
+					<%= link_to post_like_path(post), method: :delete do %>
+						<i class="glyphicon glyphicon-heart red" aria-hidden="true" style="font-size:15px;" ></i>
+					<%= post.likes.count %>
+					<% end %>
+				<% else %>
+				    <%= link_to post_like_path(post), method: :post do %>
+				    	<i class="glyphicon glyphicon-heart-empty red" aria-hidden="true" style="font-size:15px;" ></i>
+				    <%= post.likes.count %>
+				    <% end %>
+				<% end %>
+				    <!-- like -->
+				    コメント<%= post.comments.count %>件
+				</td>
 			</tr>
 			<% end %>
 		</table>
