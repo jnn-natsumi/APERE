@@ -1,1 +1,49 @@
+<div class="container">
+	<div class="col-12">
+
 <h1>Index Page</h1>
+
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-9">
+			<table>
+			<tr>
+				<th></th>
+				<th>旅行先</th>
+				<th>２拠点</th>
+				<th>費用</th>
+				<th>説明</th>
+				<th></th>
+			</tr>
+			<tr>
+				<% @posts.each do |post| %>
+				<td><%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+					<%= link_to post.user.name, post.user %>
+				</td>
+				<td class="mini"><%= post.travel_spot %></td>
+				<td class="mini"><%= post.point_a %>と<%= post.point_b %></td>
+				<td class="mini"><%= post.cost %></td>
+				<td class="explan"><%= post.explanation %></td>
+				<td>
+					<%= link_to ' check',post_path(post), class: "btn btn-default btn-sm glyphicon glyphicon-eye-open" %>
+					<!-- like -->
+				<% if post.liked_by?(current_user) %>
+					<%= link_to post_like_path(post), method: :delete do %>
+						<i class="glyphicon glyphicon-heart red" aria-hidden="true" style="font-size:15px;" ></i>
+					<%= post.likes.count %>
+					<% end %>
+				<% else %>
+				    <%= link_to post_like_path(post), method: :post do %>
+				    	<i class="glyphicon glyphicon-heart-empty red" aria-hidden="true" style="font-size:15px;" ></i>
+				    <%= post.likes.count %>
+				    <% end %>
+				<% end %>
+				    <!-- like -->
+				</td>
+			</tr>
+			<% end %>
+		</table>
+		</div>
+	</div>
+</div>
+
