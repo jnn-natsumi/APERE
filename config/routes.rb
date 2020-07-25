@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   	resource :relationships, only:[:create, :destroy]
   	get :follows, on: :member
     get :followers, on: :member
+    get :favorite, on: :member
   end
-  get 'users/favorite' => 'users#favorite'
+  # get 'users/:id/favorite' => 'users#favorite'
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
