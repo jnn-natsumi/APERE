@@ -22,8 +22,8 @@
 				</td>
 				<td class="mini"><%= post.travel_spot %></td>
 				<td class="mini"><%= post.point_a %>と<%= post.point_b %></td>
-				<td class="mini"><%= post.cost %></td>
-				<td class="explan"><%= post.explanation %></td>
+				<td class="mini"><%= post.cost %>円</td>
+				<td class="explan"><%= truncate(post.explanation) %></td>
 				<td>
 					<%= link_to ' check',post_path(post), class: "btn btn-default btn-sm glyphicon glyphicon-eye-open" %>
 					<!-- like -->

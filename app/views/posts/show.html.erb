@@ -12,7 +12,7 @@
 			<div>
 				<p><strong>費用</strong>
 				<span class="glyphicon glyphicon-yen"></span></p>
-				<%= @post.cost %>
+				<%= @post.cost %>円
 			</div>
 			<div>
 				<p><strong>タグ付け</strong>
@@ -44,9 +44,9 @@
 			<div class="actions text-right">
 				<% if current_user == @user %>
 		        	<%= link_to 'Edit',edit_post_path(@post), class: "btn btn-success btn-sm" %>
+		        <% end %>
 			</div>
 		</div>
-	  <% end %>
 	  </div>
 
 	  <div class="row">

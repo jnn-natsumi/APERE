@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Theme Simply Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+.bg-1 {
+    background-color: white; /* Green */
+    color: brack;
+}
+.bg-2 {
+    background-color: #f4a4a4; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 {
+    background-color: #A7F1FF; /* White */
+    color: #555555;
+}
+.container-fluid1 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+</style>
+
+<body>
+  <div class="container-fluid1 bg-1 text-center">
+    <h1 class="name">NATSUMI MINOWA</h1>
+    <%= image_tag 'mypicture.jpg', :width => '200', :height => '200', :class => "img-circle" %>
+    <h2 class="lock">Look before you leap.</h2>
+    <h5>石橋を叩いて渡る</h5>
+  </div>
+  <div class="container-fluid1 bg-2 text-center">
+  <h1 class="name">PROFILE</h1>
+  <p>みのわなつみ と申します。<br />
+  	東京出身で、苗字を漢字にすると全国で３０人しかいない珍苗字です。</p>
+  	<p>新卒で不動産業界のソリューション部に勤めてました。<br />
+    不動産業界に飛び込んだ理由として、「自分の考えたモノを作る」という夢がありました。<br />
+    働いてくうちに、「もっと自分で手を動かしてモノを作る仕事に関わりたい！！」と思い、転職を決意。<br />
+    どうぞ、よろしくお願い致します。</p>
+    <p>趣味　：　<br />
+    	<strong>旅行</strong>　（好き♡台湾 京都）/ <strong>映画鑑賞</strong>　（好き♡ハウルの動く城）/ <strong>シール集め</strong>　（macに貼りまくってます）</p>
+</div>
+
+<div class="container-fluid1 bg-3 text-center">
+  <h1 class="name">SKILL</h1>
+  <table class="skill">
+  <tr class="skill">
+    <th class="skill">HTML&CSS</th>
+    <td class="skill">♡ ♡ ♡ ・ ・</td>
+  </tr>
+  <tr class="skill">
+    <th class="skill">Ruby</th>
+    <td class="skill">♡ ♡ ♡ ・ ・</td>
+  </tr>
+  <tr class="skill">
+    <th class="skill">Ruby on Rails</th>
+    <td class="skill">♡ ♡ ♡ ♡ ♡</td>
+  </tr>
+  <tr class="skill">
+    <th class="skill">Javascript</th>
+    <td class="skill">♡ ・ ・ ・ ・</td>
+  </tr>
+</table>
+<h4 class="btn-square-shadow"><img src="https://img.icons8.com/windows/32/000000/github.png"/><%= link_to 'My GitHub', 'https://github.com/jnn-natsumi', :style=>"color:black;" %></h4><br />
+<a href="https://icons8.com/icon/16318/github">GitHub icon by Icons8</a>
+</div>
+
+</body>
+</html>
