@@ -75,3 +75,6 @@ gem 'kaminari'
 gem 'geocoder'
 gem 'dotenv-rails'
 gem 'jp_prefecture'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+

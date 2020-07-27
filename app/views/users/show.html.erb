@@ -4,7 +4,7 @@
  		<table>
 			<tr>
 				<th class="post">旅行先</th>
-				<th class="post">２拠点</th>
+				<th class="post">出発地点</th>
 				<th class="post">費用</th>
 				<th class="post">説明</th>
 				<th class="post"></th>
@@ -13,7 +13,14 @@
 			<tr>
 				<% @posts.each do |post| %>
 				<td><%= post.travel_spot %></td>
-				<td><%= post.point_a %>と<%= post.point_b %></td>
+				<td><% if post.point_a && post.point_b? %>
+						<%= post.point_a %>と<%= post.point_b %>
+					<% elsif  post.point_a? %>
+						<%= post.point_a %>
+					<% else %>
+						<P>----</P>
+					<% end %>
+				</td>
 				<td><%= post.cost %>円</td>
 				<td><%= truncate(post.explanation) %></td>
 				<td>
@@ -36,3 +43,7 @@
 			</tr>
 			<% end %>
 		</table>
+
+		<div class='p-top__paginate'>
+			<%= paginate @posts %>
+		</div>

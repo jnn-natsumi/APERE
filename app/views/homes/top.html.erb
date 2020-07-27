@@ -1,10 +1,31 @@
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
 <div class="container">
 	<div class="col-12">
+		<% unless user_signed_in? %>
+			<h3 class="hello text-center"><font color="#f4a4a4">初めての方は「APEREとは」から</font></h3>
+		<% else %>
+			<h3 class="hello text-center"><font color="#f4a4a4">こんにちは！<%= @user.name %>さん</font></h3>
+		<% end %>
 
 		<div class="row rog">
 			<div class="col-sm-4">
 				<h2>地方タグ検索</h2>
 				<h4 class="leftcolor-blue">行きたい地方をクリックしてください♪</h4>
+				<table>
+				<tr>
+					<th>タグ付け検索</th>
+				</tr>
+				<tr>
+					<td>
+						<% @posts.each do |post| %>
+						<% post.tag_list.each do |tag| %>
+			  			<span class="btn-sticky"><%= tag %></span>
+						<% end %>
+						<% end %>
+					</td>
+				</tr>
+			</table>
 			</div>
 
 		<div class="col-sm-8">

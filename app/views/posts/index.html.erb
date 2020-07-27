@@ -4,13 +4,25 @@
 <h1>Index Page</h1>
 
 		<div class="col-sm-3">
+			<table>
+				<tr>
+					<th>タグ付け検索</th>
+				</tr>
+				<tr>
+					<td>
+						<% @regions.each do |tag| %>
+			  			<span class="btn-sticky"><%= tag %></span>
+						<% end %>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div class="col-sm-9">
 			<table>
 			<tr>
 				<th></th>
 				<th>旅行先</th>
-				<th>２拠点</th>
+				<th>出発地点</th>
 				<th>費用</th>
 				<th>説明</th>
 				<th></th>
@@ -21,7 +33,14 @@
 					<%= link_to post.user.name, post.user %>
 				</td>
 				<td class="mini"><%= post.travel_spot %></td>
-				<td class="mini"><%= post.point_a %>と<%= post.point_b %></td>
+				<td class="mini"><% if post.point_a && post.point_b? %>
+									<%= post.point_a %>と<%= post.point_b %>
+								<% elsif  post.point_a? %>
+									<%= post.point_a %>
+								<% else %>
+									<P>----</P>
+								<% end %>
+				</td>
 				<td class="mini"><%= post.cost %>円</td>
 				<td class="explan"><%= truncate(post.explanation) %></td>
 				<td>
@@ -43,6 +62,9 @@
 			</tr>
 			<% end %>
 		</table>
+		</div>
+		<div class='p-top__paginate'>
+			<%= paginate @posts %>
 		</div>
 	</div>
 </div>
