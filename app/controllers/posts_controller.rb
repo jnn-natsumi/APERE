@@ -3,7 +3,12 @@ class PostsController < ApplicationController
 
 	def index
         @user = current_user
-        @posts = Post.all
+        @posts = Post.page(params[:page]).per(10).order(created_at: :desc)
+        regions = []
+        @posts.each do |post|
+            regions << post.tag_list
+        end
+        @regions = regions.uniq
 	end
 
     def new
@@ -13,8 +18,11 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.user_id = current_user.id
-        @post.save
-        redirect_to user_path(current_user)
+        if  @post.save
+            redirect_to user_path(current_user)
+        else
+            render action: :new
+        end
     end
 
     def edit
@@ -45,6 +53,6 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:travel_spot, :cost, :tag, :point_a, :point_b, :explanation, :travel_image)
+        params.require(:post).permit(:travel_spot, :cost, :tag, :point_a, :point_b, :explanation, :travel_image, :tag_list)
     end
 end

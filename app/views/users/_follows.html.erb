@@ -10,7 +10,9 @@
 				</div>
 		    </div>
 			<div class="col-sm-4">
-				<div><strong><%= user.name %></strong></div>
+				<div><h4><strong><%= user.name %></strong></h4>
+					 <h6><%= user.birthplace %></h6>
+				</div>
 		        <div><%= user.profile %></div>
 		        <!-- フォロー数　follows にするとエラーが発生する　直す0724 -->
 		        <div><strong><%= "フォロー　：#{user.followings.count}" %></strong></div>

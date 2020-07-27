@@ -1,10 +1,13 @@
 class Post < ApplicationRecord
 
+  # タグ付け
+  acts_as_taggable
+
 	attachment :travel_image, destroy: false
 	validates :travel_spot, presence: true
   validates :explanation, presence: true, length: { maximum: 500 }
   validates :cost, presence: true
-  validates :tag, presence: true
+  # validates :tag, presence: true
 
   belongs_to :user, optional: true
   has_many :comments, dependent: :destroy
@@ -49,7 +52,7 @@ class Post < ApplicationRecord
 
   enum tag: {
   	"--未選択--":0,北海道地方:1,東北地方:2,関東地方:3,
-  	中部地方:4,関西地方:5,中国地方:6,
+  	中部地方:4,近畿地方:5,中国地方:6,
   	四国地方:7,九州地方:8,沖縄地方:9
   }, _prefix: true
 

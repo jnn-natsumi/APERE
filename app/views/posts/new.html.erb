@@ -3,9 +3,21 @@
 		<div class="rog">
 			<h1>キロクする</h1>
 				<%= form_for(@post) do |f| %>
+
+				<!-- エラーメッセージ記載 -->
+				<% if @post.errors.any? %>
+					<h3><font color="red"><%= @post.errors.count %>error occurrence</font></h3>
+					<ul><font color="red">
+						<% @post.errors.full_messages.each do |message| %>
+						<li><%= message %></font></li>
+						<% end %>
+					</font></ul>
+				<% end %>
+				<!-- エラーメッセージ記載 -->
+
 					<div class="col-sm-3">
 						<div>
-						<%= f.label :旅行先 %>
+						<%= f.label :travel %>
 						<span class="glyphicon glyphicon-plane"></span>
 						<%= f.select :travel_spot, Post.travel_spots.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
 						</div>
@@ -17,12 +29,12 @@
 						<div>
 							<%= f.label :タグ付け %>
 							<span class="glyphicon glyphicon-tags"></span>
-							<%= f.select :tag, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+							<%= f.select :tag_list, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
 						</div>
 					</div>
 					<div class="col-sm-5">
 						<div>
-							<%= f.label :"2拠点" %>
+							<%= f.label :"出発地点" %>
 							<span class="glyphicon glyphicon-user"></span>
 							<%= f.select :point_a, Post.point_as.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
 							<span class="glyphicon glyphicon-heart" style="color: red;" ></span>

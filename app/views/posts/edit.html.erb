@@ -18,11 +18,13 @@
 				<%= f.label :タグ付け %>
 				<span class="glyphicon glyphicon-tags"></span>
 				<%= f.select :tag, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+				<%= f.label :タグ付け, 'タグをカンマ区切りで入力' %>
+				<%= text_field_tag 'post[tag_list]', @post.tag_list, :class => "form-control" %>
 			</div>
 		</div>
 		<div class="col-sm-5">
 			<div>
-				<%= f.label :"2拠点" %>
+				<%= f.label :"出発地点" %>
 				<span class="glyphicon glyphicon-user"></span>
 				<%= f.select :point_a, Post.point_as.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
 				<span class="glyphicon glyphicon-heart" style="color: red;" ></span>

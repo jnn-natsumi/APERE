@@ -6,12 +6,12 @@
 
 				<!-- エラーメッセージ記載 -->
 				<% if @user.errors.any? %>
-					<h3><%= @user.errors.count %>error occurrence</h3>
-					<ul>
+					<h3><font color="red"><%= @user.errors.count %>error occurrence</font></h3>
+					<ul><font color="red">
 						<% @user.errors.full_messages.each do |message| %>
 						<li><%= message %></li>
 						<% end %>
-					</ul>
+					</font></ul>
 				<% end %>
 				<!-- エラーメッセージ記載 -->
 
