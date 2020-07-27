@@ -1,5 +1,10 @@
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 <div class="container">
 	<div class="col-12">
+
+		<% unless user_signed_in? %>
+		<h2 class="text-center try"><font color="#f4a4a4">初めての方は、「APEREとは」からどうぞ</font></h2>
+		<% end %>
 
 		<div class="row rog">
 			<div class="col-sm-4">
