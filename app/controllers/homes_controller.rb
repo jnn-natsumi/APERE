@@ -3,6 +3,11 @@ class HomesController < ApplicationController
 	def top
 		@posts = Post.all
 		@user = current_user
+		regions = []
+        @posts.each do |post|
+            regions << post.tag_list
+        end
+        @regions = regions.uniq
 	end
 
 	def about
@@ -19,6 +24,7 @@ class HomesController < ApplicationController
   			format.js
   		end
 	end
+
 
 	private
     def post_params

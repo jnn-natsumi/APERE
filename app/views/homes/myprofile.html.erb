@@ -12,16 +12,20 @@
 </head>
 <style>
 .bg-1 {
-    background-color: white; /* Green */
-    color: brack;
+    background-color: white;
+    color: black;
 }
 .bg-2 {
-    background-color: #f4a4a4; /* Dark Blue */
+    background-color: #f4a4a4;
     color: #ffffff;
 }
 .bg-3 {
-    background-color: #A7F1FF; /* White */
+    background-color: #A7F1FF;
     color: #555555;
+}
+.bg-4 {
+    background-color: black;
+    color: white;
 }
 .container-fluid1 {
     padding-top: 70px;
@@ -31,46 +35,94 @@
 
 <body>
   <div class="container-fluid1 bg-1 text-center">
-    <h1 class="name">NATSUMI</h1>
-    <h3 class="lock">who made this app "APERE"</h3>
-    <%= image_tag 'mypicture.jpg', :width => '200', :height => '200', :class => "img-circle" %>
-    <h2 class="lock">Look before you leap.</h2>
-    <h5>石橋を叩いて渡る</h5>
+      <h1 class="name">NATSUMI</h1>
+      <h3 class="lock">who made this app "APERE"</h3>
+      <%= image_tag 'mypicture.jpg', :width => '200', :height => '200', :class => "img-circle" %>
+      <h2 class="lock">Look before you leap.</h2>
+      <h5>石橋を叩いて渡る</h5>
   </div>
   <div class="container-fluid1 bg-2 text-center">
-  <h1 class="name">PROFILE</h1>
-  <p>はじめまして、なつみ と申します。<br />
-  	東京出身で、苗字を漢字にすると全国で３０人しかいない珍苗字です。</p>
-  	<p>新卒で不動産業界のソリューション部に勤めてました。<br />
-    不動産業界に飛び込んだ理由として、「自分の考えたモノを作る」という夢がありました。<br />
-    働いてくうちに、「もっと自分で手を動かしてモノを作る仕事に関わりたい！！」と思い、転職を決意。<br />
-    どうぞ、よろしくお願い致します。</p>
-    <p>趣味　：　<br />
-    	<strong>旅行</strong>　（好き♡台湾 京都）/ <strong>映画鑑賞</strong>　（好き♡ハウルの動く城）/ <strong>シール集め</strong>　（macに貼りまくってます）</p>
-</div>
-
-<div class="container-fluid1 bg-3 text-center">
-  <h1 class="name">SKILL</h1>
-  <table class="skill">
-  <tr class="skill">
-    <th class="skill">HTML&CSS</th>
-    <td class="skill">♡ ♡ ♡ ・ ・</td>
-  </tr>
-  <tr class="skill">
-    <th class="skill">Ruby</th>
-    <td class="skill">♡ ♡ ♡ ・ ・</td>
-  </tr>
-  <tr class="skill">
-    <th class="skill">Ruby on Rails</th>
-    <td class="skill">♡ ♡ ♡ ♡ ♡</td>
-  </tr>
-  <tr class="skill">
-    <th class="skill">Javascript</th>
-    <td class="skill">♡ ・ ・ ・ ・</td>
-  </tr>
-</table>
-<h4 class="btn-square-shadow"><img src="https://img.icons8.com/windows/32/000000/github.png"/><%= link_to 'My GitHub', 'https://github.com/jnn-natsumi', :style=>"color:black;" %></h4><br />
-<a href="https://icons8.com/icon/16318/github">GitHub icon by Icons8</a>
+      <h1 class="name">PROFILE</h1>
+      <p>はじめまして、なつみ と申します。<br />
+      	東京出身で、苗字を漢字にすると全国で３０人しかいない珍苗字です。</p>
+      	<p>新卒で不動産業界のソリューション部に勤めてました。<br />
+        不動産業界に飛び込んだ理由として、「自分の考えたモノを作る」という夢がありました。<br />
+        働いてくうちに、「もっと自分で手を動かしてモノを作る仕事に関わりたい！！」と思い、転職を決意。<br />
+        どうぞ、よろしくお願い致します。</p>
+        <p>趣味　：　<br />
+        	<strong>旅行</strong>　（好き♡台湾 京都）/ <strong>映画鑑賞</strong>　（好き♡ハウルの動く城）/ <strong>シール集め</strong>　（macに貼りまくってます）</p>
+  </div>
+  <div class="container-fluid1 bg-3 text-center">
+      <h1 class="name">SKILL</h1>
+          <table class="skill">
+          <tr class="skill">
+            <th class="skill">HTML&CSS</th>
+            <td class="skill">♡ ♡ ♡ ・ ・</td>
+          </tr>
+          <tr class="skill">
+            <th class="skill">Ruby</th>
+            <td class="skill">♡ ♡ ♡ ・ ・</td>
+          </tr>
+          <tr class="skill">
+            <th class="skill">Ruby on Rails</th>
+            <td class="skill">♡ ♡ ♡ ♡ ♡</td>
+          </tr>
+          <tr class="skill">
+            <th class="skill">Javascript</th>
+            <td class="skill">♡ ・ ・ ・ ・</td>
+          </tr>
+        </table>
+    <h4 class="btn-square-shadow"><img src="https://img.icons8.com/windows/32/000000/github.png"/><%= link_to 'My GitHub', 'https://github.com/jnn-natsumi', :style=>"color:black;" %></h4><br />
+    <a href="https://icons8.com/icon/16318/github">GitHub icon by Icons8</a>
+  </div>
+  <div class="container-fluid1 bg-1 text-center">
+      <h1 class="name">PASSION & TALENT</h1>
+      <h5><strong>好きなこと</strong></h5>
+      <br>
+      <div class="row">
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-tint logo-small"></span>
+          <h4>DESIGN</h4>
+          <p>デザインを見ること / 考えることが好きです。<br />
+          UI/UXデザインに興味があります。</p>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-heart logo-small"></span>
+          <h4>PSYCHOLOGY</h4>
+          <p>学生の頃、「経済学部」を専攻したのも<br />
+            行動経済学という「心理学 × 経済学」学問に興味を持ったからです。<br />
+            「この人はなぜ、このような行動をとったのか」<br />
+            と考えることが好きです。</p>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-user logo-small"></span>
+          <h4>PERSON</h4>
+          <p>自分にない考えや、行動をする人の話を聞くことが好きです。<br />
+          自分に足りない部分を「吸収」し勇気をもらえるからです。</p>
+        </div>
+        </div>
+        <br><h5><strong>得意なこと</strong></h5><br>
+      <div class="row">
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-comment logo-small"></span>
+          <h4>Think deeply</h4>
+          <p>冒頭の「石橋を叩いて渡る」に関連することですが、<br />
+            「深く考えること」を得意としています。</p>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-headphones logo-small"></span>
+          <h4>Think about people</h4>
+          <p>「相手の立場に立って考えること」を得意としてます。<br />
+              相談に乗ることが多く、何がその人を悩ませているのか、<br />
+              根本を発見することができます。</p>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-pencil logo-small"></span>
+          <h4>To study</h4>
+          <p>「勉強すること」が得意です。<br />
+          知的好奇心があり、知らない分野は知りたい、と思っています。</p>
+        </div>
+      </div>
 </div>
 
 </body>

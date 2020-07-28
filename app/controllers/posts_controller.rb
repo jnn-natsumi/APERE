@@ -19,7 +19,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         if  @post.save
-            redirect_to user_path(current_user)
+            redirect_to user_path(current_user), notice: "キロクを投稿しました！"
         else
             render action: :new
         end
