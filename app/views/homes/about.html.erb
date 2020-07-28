@@ -8,6 +8,10 @@
 			margin: 25px 0;
 		}
 	}
+	.container-fluid1 {
+	    padding-top: 70px;
+	    padding-bottom: 70px;
+	}
 </style>
 
 <div class="container">
@@ -15,7 +19,8 @@
 		<style type="text/css">
         <!-- .gyo {line-height: 400%;} -->
         </style>
-		<div class="container-fluid bg-grey">
+
+		<div class="container-fluid1 bg-grey bg-1">
 			<div class="row">
 				<div class="col-sm-4">
 					<span class="navbar-logo"><%= image_tag('main-logo.png') %></span>
@@ -31,12 +36,12 @@
 			</div>
 		</div>
 
-		<div class="container-fluid">
+		<div class="container-fluid1 bg-grey bg-2">
 			<div class="row">
 				<div class="col-sm-8">
 					<h2 class="leftcolor-blue">Background</h2>
 					<h3>ⅰ.遠距離カップルの<strong>"障害"</strong>をなくしたい</h3>
-					<h5><span class="gyo"><strong>上京がキッカケで遠距離恋愛になるカップルは多い。</strong></span></h5><br />
+					<h5><span class="gyo"><strong><font color="#f4a4a4">上京がキッカケで遠距離恋愛になるカップルは多い。</font></strong></span></h5><br />
 						実際に、私が大学生から社会人になったタイミングで、<br />
 						知り合いのカップル達が「遠距離になって別れた〜」という声が多くありました。<br />
 						もちろん、新しい出会いによる別れや価値観の相違などの理由もありますが、<br />
@@ -45,13 +50,13 @@
 				        遠距離カップルをターゲットにしたアプリを考えました。</p>
 				</div>
 				<div class="col-sm-4">
-					<span class="navbar-logo"><%= image_tag 'couple.jpg', :width => '300', :height => '200', :class => "img-circle" %></span>
+					<%= image_tag 'couple.jpg', :width => '400', :height => '300' %>
 				</div>
 			</div>
 		</div>
 
 
-		<div class="container-fluid bg-grey">
+		<div class="container-fluid1 bg-grey bg-3">
 			<div class="row">
 				<div class="col-sm-4"><br />
 					<span class="navbar-logo"><%= image_tag'search.png', :width => '400', :height => '200' %></span>
@@ -59,10 +64,10 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-7">
 					<h3>ⅱ.会うための<strong>"費用"</strong>で悩んでいるカップルが多い</h3>
-					<p><span class="gyo">遠距離カップルにアンケートを取ったところ、以下の回答がありました。</span><br />
+					<p>遠距離カップルにアンケートを取ったところ、以下の回答がありました。<br />
 						Q. 遠距離恋愛で辛い・辛かったことは？（複数回答 可）<br />
 						A.１位：会う時の費用が掛かる(9/12人中)<br />２位：落ち込んだ時に側にいない(8/12中) 他...<br />
-						<span class="gyo"><strong>「交通費等の費用」で悩んでいる人が多数いました。</strong></span><br />
+						<h5><span class="gyo"><strong><font color="#f4a4a4">「交通費等の費用」で悩んでいる人が多数いました。</strong></span></font><br />
 					   「中間地点で会えればお互いの交通費はそれぞれ出せるのに」<br />
 					   「中間地点にいい場所がない！」・・・と、お金のことでモヤモヤする。<br />
 						それなら、２人の中間地点で<br />
@@ -72,5 +77,7 @@
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 </div>
