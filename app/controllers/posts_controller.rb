@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
+    # ２になおす　7/29
+
 	def index
         @user = current_user
         @posts = Post.page(params[:page]).per(10).order(created_at: :desc)
@@ -9,7 +11,11 @@ class PostsController < ApplicationController
             regions << post.tag_list
         end
         @regions = regions.uniq
-	end
+        # binding.pry
+        if params[:tag_name]
+            @posts = Post.tagged_with("#{params[:tag_name].first}")
+        end
+    end
 
     def new
         @post = Post.new
