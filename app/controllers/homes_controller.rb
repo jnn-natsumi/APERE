@@ -8,6 +8,9 @@ class HomesController < ApplicationController
             regions << post.tag_list
         end
         @regions = regions.uniq
+        if params[:tag_name]
+            @posts = Post.tagged_with("#{params[:tag_name]}")
+        end
 	end
 
 	def about

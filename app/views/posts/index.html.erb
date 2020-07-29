@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="col-12">
 
-<h1 class="hello">投稿一覧</h1>
+		<h1 class="hello">投稿一覧</h1>
 
 		<div class="col-sm-3">
 			<table>
@@ -13,7 +13,8 @@
 				<tr>
 					<td>
 						<% @regions.each do |tag| %>
-			  			<span class="btn-sticky" onclick="filter()"><%= tag %></span>
+						<!-- <%#= posts_path(tag_name: tag) %> -->
+			  			<%= link_to tag, posts_path(tag_name: tag), class: "text-white btn-sticky" %>
 						<% end %>
 					</td>
 				</tr>
@@ -65,15 +66,5 @@
 			<% end %>
 		</table>
 		</div>
-		<div class='p-top__paginate'>
-			<%= paginate @posts %>
-		</div>
 	</div>
 </div>
-
-<script>
-	filter() {
-		
-	}
-</script>>
-
