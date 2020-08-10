@@ -15,16 +15,17 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
-//= require jquery.rwdImageMaps.min.js
 //= require_tree .
-$(function(){
-	jQuery( 'img[usemap]' ).rwdImageMaps();
-});
 
-function foo(e){
-	if($(`#${$(e).data("id")}`)[0]){
-		$(`#${$(e).data("id")}`).remove();
-	} else {
-		$('#pre').append(`<p id="${$(e).data("id")}">${$(e).prop("title")}</p>`);
-	}
-}
+// お気に入り機能
+// $(function(){
+// 	jQuery( 'img[usemap]' ).rwdImageMaps();
+// });
+
+// function foo(e){
+// 	if($(`#${$(e).data("id")}`)[0]){
+// 		$(`#${$(e).data("id")}`).remove();
+// 	} else {
+// 		$('#pre').append(`<p id="${$(e).data("id")}">${$(e).prop("title")}</p>`);
+// 	}
+// }
