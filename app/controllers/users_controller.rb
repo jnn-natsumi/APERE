@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
 	def favorite
 		@user = User.find(params[:id])
+     	@posts = Post.page(params[:page]).per(10).order(created_at: :desc)
 	end
 
   # フォロー・フォロワー一覧の実装
