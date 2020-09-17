@@ -3,35 +3,35 @@
 <%= render 'users/followers', user: @user %>
 
 <!-- フォローされている側 -->
-	<!--users一覧 -->
-	<table class="table">
-		<thead>
-			<tr>
-				<th></th>
-				<th>名前</th>
-				<th>拠点</th>
-				<th>自己紹介</th>
-			</tr>
-		</thead>
+<!--users一覧 -->
+<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>名前</th>
+			<th>拠点</th>
+			<th>自己紹介</th>
+		</tr>
+	</thead>
 
-		<tbody>
-			<% @users.each do |user| %>
-			<tr>
-				<td><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
-				<td><%= link_to user.name, user %></td>
-				<th><%= user.birthplace %></th>
-				<th><%= user.profile %></th>
-				<th>
-					<% if current_user != user %>
-						<% if user.followed_by?(current_user) %>
-							<div class="row"><%= link_to "Unfollow", user_relationships_path(user.id), class: "btn btn-danger", method: :delete%></div>
-						<% else %>
-							<div class="row"><%= link_to "Follow", user_relationships_path(user.id), class: "btn btn-info", method: :post %></div>
-						<% end %>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
+			<td><%= link_to user.name, user %></td>
+			<th><%= user.birthplace %></th>
+			<th><%= user.profile %></th>
+			<th>
+				<% if current_user != user %>
+					<% if user.followed_by?(current_user) %>
+						<div class="row"><%= link_to "Unfollow", user_relationships_path(user.id), class: "btn btn-danger", method: :delete%></div>
+					<% else %>
+						<div class="row"><%= link_to "Follow", user_relationships_path(user.id), class: "btn btn-info", method: :post %></div>
 					<% end %>
-				</th>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+				<% end %>
+			</th>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 

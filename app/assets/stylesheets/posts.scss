@@ -37,7 +37,7 @@ table th,table td.mini{
 }
 
 i.red {
-    color: red;
+  color: red;
 }
 
 div.rog{
@@ -63,21 +63,21 @@ div.rog{
 .p-top {
   min-width: 960px;
   &__title {
-    text-align: center;
-    font-size: 16px;
-  }
+  text-align: center;
+  font-size: 16px;
+}
 
-  &__introduce {
-    margin: 0 auto;
-    th {
-        padding: 0 15px;
-    }
-    td {
-      padding: 0 15px;
-    }
-  }
-  &__paginate {
-    text-align: center;
-    margin:0 auto;
-  }
+&__introduce {
+  margin: 0 auto;
+  th {
+     padding: 0 15px;
+     }
+  td {
+    padding: 0 15px;
+     }
+}
+&__paginate {
+  text-align: center;
+  margin:0 auto;
+}
 }
