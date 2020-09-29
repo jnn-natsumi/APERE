@@ -52,6 +52,8 @@
 →次に会う予定を立てる時・旅行に行ったところを記録に残す時
 
 ## 設計書
+→ER図
+https://app.diagrams.net/#G1uSGlL7TadV9KNwYoEeiIumT5dZm7tWCp
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/17iWLgc0IfxhfESvPgyMjs1HyHKvEURZAONZw5OlIdg0/edit?usp=sharing
