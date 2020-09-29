@@ -65,8 +65,8 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'selenium-webdriver'
   # 以下　一旦コメントアウト　09/11
-  # gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   # 以下　一旦コメントアウト　09/11
   # chromedriver-helperは対応終了しているので、'webdrivers'に書き換える必要あり　09/12

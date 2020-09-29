@@ -30,10 +30,16 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   	context 'profileのカラム' do
   		let(:test_user) { user }
   		it '140文字以下であること' do
-  			test_user.profile = Faker::Lorem.characters(number:51)
-  			is_expected.to eq false;
+  			test_user.profile = Faker::Lorem.characters(number:141)
+  			is_expected.to eq false
   		end
   	end
   end
-  # describe 'アソシエーションのテスト' 導入する
+  describe 'アソシエーションのテスト' do
+    context 'Postモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:posts).macro).to eq :has_many
+      end
+    end
+  end
 end
