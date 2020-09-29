@@ -1,12 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Userモデルのテスト', type: :model do
-  # 名前が空欄で登録できない→名前を空欄で登録したらfalse
-  # バリデーションしていない状態で失敗→設定したら成功
-  # 登録できるかできないか 登録できたら失敗
-  # エラーメッセージがなければ失敗
+RSpec.describe  'Userモデルのテスト', type: :model do
 
-  describe 'バリデーションのテスト' do
+describe 'バリデーションのテスト' do
   	let(:user) { build(:user) }
   	subject { test_user.valid? }
 

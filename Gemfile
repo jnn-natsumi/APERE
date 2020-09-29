@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "http://github.com/#{repo}.git" }
 
 ruby '2.5.7'
 
@@ -68,13 +68,13 @@ group :test do
   gem 'selenium-webdriver'
   # 以下　一旦コメントアウト　09/11
   # Easy installation and use of chromedriver to run system tests with Chrome
-  # 以下　一旦コメントアウト　09/11
-  # chromedriver-helperは対応終了しているので、'webdrivers'に書き換える必要あり　09/12
-  # gem 'chromedriver-helper'
-  # Rspecをインストール
-  # 以下　一旦コメントアウト　09/11
-  # gem 'database_cleaner'
-  # gem 'launchy'
+
+  gem 'chromedriver-helper'
+  # RSpec Gem追加 09/16
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
