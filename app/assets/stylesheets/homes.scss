@@ -73,26 +73,37 @@ table td.skill{
   padding: 10px 0;
 }
 
-.btn-square-shadow {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #52c2d0;/*ボタン色*/
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
-}
-.btn-square-shadow:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-  border-bottom: none;
-}
-
 .logo-small {
   color: #f4a4a4;
   font-size: 50px;
 }
 
+}
+
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #c7c7c7;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: gray;
+}
+
+a.btn--radius {
+   border-radius: 50vh;
+}
+
+.btn--pink{
+  color: #fff;
+  background-color: #c7c7c7;
+}
+.btn--pink:hover{
+  color: #fff;
+  background: rgb(244, 164, 164);
+}
+
+.btn--radius {
+   border-radius: 100vh;
 }
