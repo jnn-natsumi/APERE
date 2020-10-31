@@ -1,10 +1,11 @@
-<div class="container">
-	<div class="col-12">
-		<h1>Edit Page</h1>
-		<div class="row">
-			<%= form_for(@user) do |f| %>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 
-				<!-- エラーメッセージ記載 -->
+	<h3>Edit My Page</h3>
+
+
+		<%= form_for(@user) do |f| %>
+
+		<!-- エラーメッセージ記載 -->
 				<% if @user.errors.any? %>
 					<h3><font color="red"><%= @user.errors.count %>error occurrence</font></h3>
 					<ul><font color="red">
@@ -13,38 +14,31 @@
 						<% end %>
 					</font></ul>
 				<% end %>
-				<!-- エラーメッセージ記載 -->
+		<!-- エラーメッセージ記載 -->
 
-
-				<div class="col-sm-4">
-					<div>
-						<%= f.label :image %>
-						<%= f.attachment_field :profile_image, class: "user_image" %>
-					</div>
-					<div>
-						<%= f.label :name %>
-						<%= f.text_field :name, class: "name" %>
-					</div>
-				</div>
-
-				<div class="col-sm-8">
-					<div>
-						<%= f.label :自己紹介 %>
-						<%= f.text_area :profile, class: "profile" %>
-					</div>
-					<div>
-						<%= f.label :拠点の都道府県 %>
-						<%= f.select :birthplace, User.birthplaces.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="actions text-right">
-						<%= f.submit "Update", class: "btn btn-primary" %>
-					</div>
-				</div>
-
-			<% end %>
+		<div class="item">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "name" %>
 		</div>
-	</div>
-</div>
+
+		<div class="item">
+			<%= f.label :拠点の都道府県 %>
+			<%= f.select :birthplace, User.birthplaces.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+		</div>
+
+		<div class="item">
+			<%= f.label :自己紹介 %>
+			<%= f.text_area :profile, class: "profile" %>
+		</div>
+
+		<div class="item">
+			<%= f.label :image %>
+			<%= f.attachment_field :profile_image, class: "user_image" %>
+		</div>
+
+		<div class="btn-area">
+			<%= f.submit "Update", class: "btn btn-primary" %>
+		</div>
+		<% end %>
+
+	<div id="inner"></div>
