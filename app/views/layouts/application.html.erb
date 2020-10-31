@@ -10,56 +10,49 @@
 </head>
 
 <body>
-
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-logo" href="/">
-              <%= image_tag('logo.png') %>
-            </a>
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container" >
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-logo" href="/">
+                <%= image_tag('logo.png') %>
+              </a>
+        </div>
+        <% if user_signed_in? %>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">APEREとは</a></li>
+              <li><%= link_to '投稿一覧', posts_path %></li>
+              <li><%= link_to 'キロクする', new_post_path %></li>
+              <li><%= link_to 'My Page', user_path(current_user.id) %></li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">APEREとは</a></li>
+              <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+              <li><a href="/users/sign_in">ログイン</a></li>
+              <li><a href="/users/sign_up">新規登録</a></li>
+            </ul>
+          </div>
+        <% end %>
       </div>
-      <% if user_signed_in? %>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/about">APEREとは</a></li>
-            <li><%= link_to '投稿一覧', posts_path %></li>
-            <li><%= link_to 'キロクする', new_post_path %></li>
-            <li><%= link_to 'My Page', user_path(current_user.id) %></li>
-          </ul>
-        </div>
-      <% else %>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/about">APEREとは</a></li>
-            <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
-            <li><a href="/users/sign_in">ログイン</a></li>
-            <li><a href="/users/sign_up">新規登録</a></li>
-          </ul>
-        </div>
-      <% end %>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <%= yield %>
+
+
+  <footer class="container-fluid bg-4 text-center">
+    <p><%= link_to 'Made By NATSUMI', myprofile_path, :style=>"color:white;" %></p>
+    <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+  </footer>
+
 </body>
-
-<!-- footer -->
-<style>
-  .bg-4 {
-    background-color: #2f2f2f;
-    color: #ffffff;
-  }
-</style>
-
-<footer class="container-fluid bg-4 text-center">
-  <p><%= link_to 'Made By NATSUMI', myprofile_path, :style=>"color:white;" %></p>
-  <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
-</footer>
-
-
 </html>

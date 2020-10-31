@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
 	attachment :travel_image, destroy: false
 	validates :travel_spot, presence: true
+  validates :tag_list, presence: true
   validates :explanation, presence: true, length: { maximum: 500 }
   validates :cost, presence: true
   # validates :tag, presence: true

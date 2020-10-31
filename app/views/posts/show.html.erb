@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" id="inner">
+	<h3>Post Details</h3>
 	<div class="col-12">
-		<h2>投稿詳細　Page</h2>
 
 		<h4 id="notice"><font color="#FF3366"><%= notice %></font></h4>
 
@@ -52,6 +52,10 @@
 				<span class="glyphicon glyphicon-picture"></span></p>
 				<%= attachment_image_tag @post, :travel_image, :fill, 200, 200, fallback: "no-image-mini.jpg" %>
 			</div>
+			<div>
+				<p><strong>ユーザー</strong>
+				<%= @post.user.name %>円
+			</div>
 			<div class="actions text-right">
 				<% if current_user == @user %>
 		        	<%= link_to 'Edit',edit_post_path(@post), class: "btn btn-success btn-sm" %>
@@ -61,7 +65,7 @@
 	  </div>
 
 	  <div class="row">
-	  	<div class="col-sm-12">
+	  	<div class="col-sm-3 col-xs-offset-10">
 	  		<!--  -->
 	  		<% if @post.liked_by?(current_user) %>
 					<p><%= link_to post_like_path(@post), method: :delete do %>
