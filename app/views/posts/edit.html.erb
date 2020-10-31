@@ -1,54 +1,63 @@
-<div class="container">
-	<div class="col-12">
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 
-<h1>編集する</h1>
-	<%= form_for(@post) do |f| %>
-		<div class="col-sm-3">
+	<h3>Edit A Post</h3>
+
+
+		<%= form_for(@post) do |f| %>
+
+		<!-- エラーメッセージ記載 -->
 			<div>
-			<%= f.label :旅行先 %>
+				<% if @post.errors.any? %>
+					<h3><font color="red"><%= @post.errors.count %>error occurrence</font></h3>
+						<ul>
+							<% @post.errors.full_messages.each do |message| %>
+								<li><font color="red"><%= message %></font></li>
+							<% end %>
+						</ul>
+				<% end %>
+			</div>
+		<!-- エラーメッセージ記載 -->
+
+		<div class="item">
+			<%= f.label :旅行先 %><span class="required">必須</span><br>
 			<span class="glyphicon glyphicon-plane"></span>
 			<%= f.select :travel_spot, Post.travel_spots.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-			</div>
-			<div>
-				<%= f.label :費用 %>
-				<span class="glyphicon glyphicon-yen"></span>
-				<%= f.text_field :cost, class: "cost" %>円
-			</div>
-			<div>
-				<%= f.label :タグ付け %>
-				<span class="glyphicon glyphicon-tags"></span>
-				<%= f.select :tag, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-				<%= f.label :タグ付け, 'タグをカンマ区切りで入力' %>
-				<%= text_field_tag 'post[tag_list]', @post.tag_list, :class => "form-control" %>
-			</div>
 		</div>
-		<div class="col-sm-5">
-			<div>
-				<%= f.label :"出発地点" %>
-				<span class="glyphicon glyphicon-user"></span>
-				<%= f.select :point_a, Post.point_as.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-				<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
-				<%= f.select :point_b, Post.point_bs.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-				<span class="glyphicon glyphicon-user"></span>
-			</div>
-			<div>
-				<%= f.label :説明文 %>
-				<span class="glyphicon glyphicon-pencil"></span>
-				<%= f.text_area :explanation, class: "explanation" %>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div>
-				<%= f.label :画像 %>
-				<span class="glyphicon glyphicon-picture"></span>
-				<%= f.attachment_field :travel_image, class: "travel_image" %>
-			</div>
-			<div class="actions text-right">
-				<%= f.submit "編集する", class: "btn btn-success" %>
-				<%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
-			</div>
-		</div>
-	<% end %>
 
-	</div>
-</div>
+		<div class="item">
+			<%= f.label :"出発地点" %>
+			<br><span class="glyphicon glyphicon-user"></span>
+			<%= f.select :point_a, Post.point_as.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+				<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
+				<%= f.select :point_b, Post.point_bs.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %><span class="glyphicon glyphicon-user"></span>
+		</div>
+
+		<div class="item">
+			<%= f.label :費用 %> <span class="required">必須</span><br>
+			<span class="glyphicon glyphicon-yen"></span>
+			<%= f.text_field :cost, class: "cost" %>円
+		</div>
+
+		<div class="item">
+			<%= f.label :説明文 %><span class="glyphicon glyphicon-pencil"></span><span class="required">必須</span><br>
+			<%= f.text_area :explanation, class: "explanation" %>
+		</div>
+
+		<div class="item">
+			<%= f.label :タグ付け %><span class="required">必須</span><br>
+			<span class="glyphicon glyphicon-tags"></span>
+			<%= f.select :tag, Post.tags.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+		</div>
+
+		<div class="item">
+			<%= f.label :画像 %><span class="glyphicon glyphicon-picture"></span>
+			<%= f.attachment_field :travel_image, class: "travel_image" %>
+		</div>
+
+		<div class="btn-area">
+			<%= f.submit "編集する", class: "btn btn-success" %>
+			<%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+		</div>
+		<% end %>
+
+	<div id="inner3"></div>
