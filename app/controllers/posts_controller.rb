@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :current_user,only: [:create,:edit,:update,:destroy,:index]
+    before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
+    before_action :correct_post,only: [:edit,:update,:destroy]
 
 
   def index
@@ -55,6 +55,13 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @post.destroy
       redirect_to user_path(current_user)
+  end
+
+   def correct_post
+        @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
   private

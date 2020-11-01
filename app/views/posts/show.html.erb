@@ -1,116 +1,106 @@
-<div class="container">
-	<div class="col-12">
-		<h2>投稿詳細　Page</h2>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 
-		<h4 id="notice"><font color="#FF3366"><%= notice %></font></h4>
+	<h3>Post Details</h3>
+	<p class="user"><strong>ユーザー</strong>:<%= link_to @post.user.name, @post.user %></p>
 
-	  <div class="row">
-		<div class="col-sm-3">
-			<div>
+	<h3 id="notice"><font color="#FF3366"><%= notice %></font></h3>
+
+		<div class="user">
 			<p><strong>旅行先</strong>
-			<span class="glyphicon glyphicon-plane"></span></p>
-			<%= @post.travel_spot %>
-			</div>
-			<div>
-				<p><strong>費用</strong>
-				<span class="glyphicon glyphicon-yen"></span></p>
-				<%= @post.cost %>円
-			</div>
-			<div>
-				<p><strong>タグ付け</strong>
-				<span class="glyphicon glyphicon-tags"></span></p>
-				<%= @post.tag %>
-				<% @post.tag_list.each do |tag| %>
-  				<span style="background-color: #e9e9e9; border-radius: 5px;"><%= tag %></span>
-				<% end %>
-			</div>
+			<span class="glyphicon glyphicon-plane"></span>
+			<%= @post.travel_spot %></p>
 		</div>
-		<div class="col-sm-5">
-			<div>
-				<p><strong>出発地点</strong></p>
-				<% if @post.point_a && @post.point_b? %>
-					<span class="glyphicon glyphicon-user"></span>
-					<%= @post.point_a %>
-					<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
-					<%= @post.point_b %>
-					<span class="glyphicon glyphicon-user"></span>
-				<% elsif  @post.point_a? %>
-					<%= @post.point_a %>
-				<% else %>
-					<P>----</P>
-				<% end %>
-			</div>
-			<div>
-				<p><strong>説明文</strong>
-				<span class="glyphicon glyphicon-pencil"></span></p>
-				<%= @post.explanation %>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div>
-				<p><strong>画像</strong>
-				<span class="glyphicon glyphicon-picture"></span></p>
-				<%= attachment_image_tag @post, :travel_image, :fill, 200, 200, fallback: "no-image-mini.jpg" %>
-			</div>
-			<div class="actions text-right">
-				<% if current_user == @user %>
-		        	<%= link_to 'Edit',edit_post_path(@post), class: "btn btn-success btn-sm" %>
-		        <% end %>
-			</div>
-		</div>
-	  </div>
 
-	  <div class="row">
-	  	<div class="col-sm-12">
+		<div class="user">
+				<p><strong>出発地点</strong>
+					<% if @post.point_a && @post.point_b? %>
+						<span class="glyphicon glyphicon-user"></span>
+						<%= @post.point_a %>
+						<span class="glyphicon glyphicon-heart" style="color: red;" ></span>
+						<%= @post.point_b %>
+						<span class="glyphicon glyphicon-user"></span></p>
+					<% elsif  @post.point_a? %>
+						<%= @post.point_a %></p>
+					<% else %>
+						<P>----</P>
+					<% end %>
+			</div>
+
+			<div class="user">
+				<p><strong>費用</strong>
+					<span class="glyphicon glyphicon-yen"></span>
+					<%= @post.cost %>円</p>
+			</div>
+
+			<div class="user">
+				<p><strong>説明文</strong>
+					<span class="glyphicon glyphicon-pencil"></span></p>
+					<%=safe_join(@post.explanation.split("\n"),tag(:br))%>
+			</div>
+
+			<div class="user">
+				<p><strong>タグ付け</strong>
+					<span class="glyphicon glyphicon-tags"></span>
+					<%= @post.tag %>
+					<% @post.tag_list.each do |tag| %>
+	  				<span style="background-color: #e9e9e9; border-radius: 5px;"><%= tag %></span></p>
+					<% end %>
+			</div>
+
+			<div class="user">
+				<p><strong>画像</strong>
+					<span class="glyphicon glyphicon-picture"></span></p>
+					<%= attachment_image_tag @post, :travel_image, :fill, 200, 200, fallback: "no-image-mini.jpg" %>
+			</div>
+
+
+		<div class="row">
+	  	<div class="col-sm-3 col-xs-offset-10">
 	  		<!--  -->
 	  		<% if @post.liked_by?(current_user) %>
-					<p><%= link_to post_like_path(@post), method: :delete do %>
-						<i class="glyphicon glyphicon-heart red" aria-hidden="true" style="font-size:25px;" ></i>
-					<%= @post.likes.count %>
-					<% end %>
+						<p><%= link_to post_like_path(@post), method: :delete do %><i class="glyphicon glyphicon-heart red" aria-hidden="true" style="font-size:25px;" ></i>
+						<%= @post.likes.count %>
+						<% end %>
 				<% else %>
-				    <p><%= link_to post_like_path(@post), method: :post do %>
-				    	<i class="glyphicon glyphicon-heart-empty red" aria-hidden="true" style="font-size:25px;" ></i>
+				    <p><%= link_to post_like_path(@post), method: :post do %><i class="glyphicon glyphicon-heart-empty red" aria-hidden="true" style="font-size:25px;" ></i>
 				    <%= @post.likes.count %>
 				    <% end %>
 				<% end %>
-				<!--  -->
-	  		            コメント<%= @post.comments.count %>件</p>
+				<% if current_user == @user %>
+			  	<%= link_to 'Edit',edit_post_path(@post), class: "btn btn-success btn-sm" %></p>
+			  <% end %>
 	  	</div>
-	  	</div>
-
-
-	      	<table class="table">
-	      		<tr>
-	      			<th></th>
-	      			<th>名前</th>
-	      			<th>コメント</th>
-	      			<th></th>
-	      		</tr>
-	      		<% @comments.each do |com| %>
-	      		<tr>
-	      			<td><%= attachment_image_tag(com.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
-	      			<td><%= link_to com.user.name, com.user %></td>
-	      			<td class="comment"><%= com.comment %></td>
-	      		<% if current_user == com.user %>
-			        <td><%= link_to "Destroy", post_comment_path(@post, com), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-			     <% end %>
-	      		</tr>
-	      		<% end %>
-	      	</table>
-
-
-      <div class="row">
-      <%= form_for [@post, @comment] do |f| %>
-      	<div class="col-sm-8">
-      		<%= f.text_area :comment, rows:'2', class: "form-control" %>
-      	</div>
-      	<div class="col-sm-4">
-      		<%= f.submit "送信", class: "btn btn-info btn-sm" %>
-      	</div>
-      	<% end %>
-      </div>
-
 	  </div>
-	</div>
-</div>
+
+
+	<table class="table">
+	  	<tr>
+				<th></th>
+				<th>名前</th>
+				<th>コメント</th>
+				<th></th>
+	    </tr>
+	  <% @comments.each do |com| %>
+	    <tr>
+  			<td><%= attachment_image_tag(com.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %></td>
+  			<td><%= link_to com.user.name, com.user %></td>
+  			<td class="comment"><%= com.comment %></td>
+	    <% if current_user == com.user %>
+			   <td><%= link_to "Destroy", post_comment_path(@post, com), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
+			<% end %>
+	    </tr>
+	  <% end %>
+	</table>
+
+  <div class="row">
+  	<%= form_for [@post, @comment] do |f| %>
+      <div class="col-sm-8">
+      	<%= f.text_area :comment, rows:'2', class: "form-control" %>
+      </div>
+      <div class="col-sm-4">
+      	<%= f.submit "送信", class: "btn btn-info btn-sm" %>
+      </div>
+    <% end %>
+  </div>
+
+	<div id="inner4"></div>
